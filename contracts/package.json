@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@starlay-finance/starlay-protocol": "^0.0.1"
+  }
+}
