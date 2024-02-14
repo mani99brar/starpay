@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { abi } from "@utils/abi/StarlayProtocolDataProvider.json";
 import RESERVE_TOKENS from "@utils/constants/tokens/ReserveTokens.json";
+import POOL_PAIRS from "@utils/constants/addresses/PoolPairs.json";
 import { Token } from "@interfaces/token";
 import { UserAllReserveData } from "@interfaces/userAllReserveData";
 import { UserReserveData } from "@interfaces/userReserveData";
@@ -13,7 +14,9 @@ const RPC_ENDPOINT = "https://astar.public.blastapi.io";
 
 const UserRepayments = () => {
   const [userData, setUserData] = useState<UserAllReserveData>({});
+  const [payToken, setPayToken] = useState<string>("");
   const { address, isConnecting, isDisconnected } = useAccount();
+
   async function getAllReservesTokens(tokenInfo: Token) {
     try {
       const provider = new ethers.providers.JsonRpcProvider(RPC_ENDPOINT);
@@ -41,6 +44,9 @@ const UserRepayments = () => {
     fetchUserReserveData();
     console.log(userData);
   }, [address]);
+  function handlePayTokenChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setPayToken(event.target.value);
+  }
   if (isConnecting) return <p>Connecting...</p>;
   if (isDisconnected) return <p>Connect Your Wallet</p>;
 
@@ -59,12 +65,13 @@ const UserRepayments = () => {
                 name=""
                 id=""
                 className="text-white bg-black w-[25%] p-2"
+                onChange={handlePayTokenChange}
               >
                 <option value="none" disabled selected>
                   Choose Token to Repay
                 </option>
-                {RESERVE_TOKENS.map((token) => (
-                  <option key={token.symbol} value={token.tokenAddress}>
+                {POOL_PAIRS.map((token) => (
+                  <option key={token.symbol} value={token.tokenA}>
                     {token.symbol}
                   </option>
                 ))}
@@ -75,6 +82,7 @@ const UserRepayments = () => {
                 key={symbol}
                 userReserveData={userReserveData}
                 symbol={symbol}
+                payToken={payToken}
               />
             ))}
           </ul>

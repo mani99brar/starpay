@@ -1,0 +1,109 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220af12db6ceb5e6a3ecbad3d6e8569e36c719c6c149bd9191398f700d9bd9c7a6664736f6c63430008140033",
+    "sourceMap": "65:25:22:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea2646970667358221220af12db6ceb5e6a3ecbad3d6e8569e36c719c6c149bd9191398f700d9bd9c7a6664736f6c63430008140033",
+    "sourceMap": "65:25:22:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/StarPay.sol\":\"StarPay\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"src/StarPay.sol\":{\"keccak256\":\"0xbabf1c3f6fa46244803865cfa03c6de872474577b064eaa6c606c01b53555884\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://9ce6fc06e6b1ad353047ed0463bbf6975395369d89a5a9d645b063b0803b0b58\",\"dweb:/ipfs/QmQzNrpoNJad6jJZ3MNNNTtd8QBh8oJT3dVHQdNKmGi5Ji\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "forge-std/=lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/StarPay.sol": "StarPay"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/StarPay.sol": {
+        "keccak256": "0xbabf1c3f6fa46244803865cfa03c6de872474577b064eaa6c606c01b53555884",
+        "urls": [
+          "bzz-raw://9ce6fc06e6b1ad353047ed0463bbf6975395369d89a5a9d645b063b0803b0b58",
+          "dweb:/ipfs/QmQzNrpoNJad6jJZ3MNNNTtd8QBh8oJT3dVHQdNKmGi5Ji"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/StarPay.sol",
+    "id": 44961,
+    "exportedSymbols": {
+      "StarPay": [
+        44960
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:52:22",
+    "nodes": [
+      {
+        "id": 44959,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:22",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 44960,
+        "nodeType": "ContractDefinition",
+        "src": "65:25:22",
+        "nodes": [],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "StarPay",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          44960
+        ],
+        "name": "StarPay",
+        "nameLocation": "74:7:22",
+        "scope": 44961,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 22
+}

@@ -1,0 +1,376 @@
+[
+  {
+    "tokenA": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+    "symbol": "LAY",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xddc41df59a47c02070e8947d33ee792fbf5f84d5"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0xa519cc08679a950a299690b5cc4a34e35277911a"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0x2efc05f05dd8481c583e1f22cf3ea64de0683d3c"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x78d5c2adeb11be00033cc4edb2c2889cf945415e"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0x3694af11af303f9fced187ad9abcc918df29bb4c"
+      },
+      {
+        "symbol": "DAI",
+        "tokenB": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+        "PoolPair": "0xeb08282ad7e81a939a9f46727857c0799000462c"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x5020845aaaa181d830c264a65c41de4bd90b33f7"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0xddc41df59a47c02070e8947d33ee792fbf5f84d5"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+    "symbol": "USDC",
+    "connectedAddresses": [
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0xddc41df59a47c02070e8947d33ee792fbf5f84d5"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0x3380d0ad5cf4081c2acdb246a55b19d4eafaf7b1"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0xbe9a5f9a4c188f4fd1c3b75b7152778ecd6ce8b5"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0xbb1290c1829007f440c771b37718fabf309cd527"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0xb9348c7d68974cd177de0f5b1226e9f141061870"
+      },
+      {
+        "symbol": "DAI",
+        "tokenB": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+        "PoolPair": "0x996d73ac8f97cf15bd476b77cb92ce47ca0e71fe"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0xeee106aa8a0de519e8eb21c66a5c2275b46b3f4d"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0xd72a602c714ae36d990dc835ea5f96ef87657d5e"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+    "symbol": "USDT",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xd72a602c714ae36d990dc835ea5f96ef87657d5e"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0xc1f8fc742a5d4aba3057444aa8fe6ce6c4b6c7e1"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0x57eb1d3771cd962fae90a7202b8ef78838fad4c3"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x806f746a7c4293092ac7aa604347be123322df1e"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0x9341a8076dc794b934a1a3be984e04d03004950c"
+      },
+      {
+        "symbol": "DAI",
+        "tokenB": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+        "PoolPair": "0x3e0a9c4b94380d4f85824d28e549d17528fa875a"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x7e0365d55dd0c4e54403f117e4d7956d663a1e31"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0xddc41df59a47c02070e8947d33ee792fbf5f84d5"
+      }
+    ]
+  },
+  {
+    "tokenA": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+    "symbol": "WBTC",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0x3380d0ad5cf4081c2acdb246a55b19d4eafaf7b1"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0xa519cc08679a950a299690b5cc4a34e35277911a"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0x883a086386839acd1a7d74b58ce352e253271e76"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x61a49ba86e168cd25ca795b07b0a93236bb25127"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0x6f3e3c298820c91266b79c251a95de2f1bbd88c7"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x84d719709d67e76a8546fa3857274900b8338313"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0xc1f8fc742a5d4aba3057444aa8fe6ce6c4b6c7e1"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+    "symbol": "WETH",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xbe9a5f9a4c188f4fd1c3b75b7152778ecd6ce8b5"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0x883a086386839acd1a7d74b58ce352e253271e76"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0x2efc05f05dd8481c583e1f22cf3ea64de0683d3c"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x87988ebde7e661f44eb3a586c5e0ceab533a2d9c"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0xaa582d179988c51d48d89cbafd6ab8963db09b64"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x331e2ceb4a6c99cc8dc0a3006256a2702d391e6e"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0x57eb1d3771cd962fae90a7202b8ef78838fad4c3"
+      }
+    ]
+  },
+  {
+    "tokenA": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+    "symbol": "WASTR",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xbb1290c1829007f440c771b37718fabf309cd527"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0x61a49ba86e168cd25ca795b07b0a93236bb25127"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0x87988ebde7e661f44eb3a586c5e0ceab533a2d9c"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0x78d5c2adeb11be00033cc4edb2c2889cf945415e"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0x3694af11af303f9fced187ad9abcc918df29bb4c"
+      },
+      {
+        "symbol": "DAI",
+        "tokenB": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+        "PoolPair": "0xccefddff4808f3e1e0340e19e43f1e9fd088b3f2"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x2d996db39afcdef966c60fcfdbbee11cfbb7131d"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0x806f746a7c4293092ac7aa604347be123322df1e"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+    "symbol": "SDN",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xb9348c7d68974cd177de0f5b1226e9f141061870"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0x6f3e3c298820c91266b79c251a95de2f1bbd88c7"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0x2efc05f05dd8481c583e1f22cf3ea64de0683d3c"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x331e2ceb4a6c99cc8dc0a3006256a2702d391e6e"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0x57eb1d3771cd962fae90a7202b8ef78838fad4c3"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+    "symbol": "DAI",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0x996d73ac8f97cf15bd476b77cb92ce47ca0e71fe"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x8ae77ff155041e01aad96b077338c28093c8b202"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0xeb08282ad7e81a939a9f46727857c0799000462c"
+      },
+      {
+        "symbol": "BUSD",
+        "tokenB": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+        "PoolPair": "0x2706de0f847f077a9ecb5610c5dde4b493f8ae1a"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0x3e0a9c4b94380d4f85824d28e549d17528fa875a"
+      }
+    ]
+  },
+  {
+    "tokenA": "0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E",
+    "symbol": "BUSD",
+    "connectedAddresses": [
+      {
+        "symbol": "USDC",
+        "tokenB": "0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98",
+        "PoolPair": "0xeee106aa8a0de519e8eb21c66a5c2275b46b3f4d"
+      },
+      {
+        "symbol": "WBTC",
+        "tokenB": "0xad543f18cFf85c77E140E3E5E3c3392f6Ba9d5CA",
+        "PoolPair": "0x84d719709d67e76a8546fa3857274900b8338313"
+      },
+      {
+        "symbol": "WETH",
+        "tokenB": "0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c",
+        "PoolPair": "0x331e2ceb4a6c99cc8dc0a3006256a2702d391e6e"
+      },
+      {
+        "symbol": "WASTR",
+        "tokenB": "0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720",
+        "PoolPair": "0x2d996db39afcdef966c60fcfdbbee11cfbb7131d"
+      },
+      {
+        "symbol": "SDN",
+        "tokenB": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+        "PoolPair": "0x3309580c80666dd6efa41646937c5ad00fee102f"
+      },
+      {
+        "symbol": "DAI",
+        "tokenB": "0x6De33698e9e9b787e09d3Bd7771ef63557E148bb",
+        "PoolPair": "0x2706de0f847f077a9ecb5610c5dde4b493f8ae1a"
+      },
+      {
+        "symbol": "LAY",
+        "tokenB": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+        "PoolPair": "0x5020845aaaa181d830c264a65c41de4bd90b33f7"
+      },
+      {
+        "symbol": "USDT",
+        "tokenB": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+        "PoolPair": "0x7e0365d55dd0c4e54403f117e4d7956d663a1e31"
+      }
+    ]
+  }
+]
