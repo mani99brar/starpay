@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { abi as tokenPairAbi } from "../contracts/out/IPancakePair.sol/IUniswapV2Pair.json";
 import { abi as routerAbi } from "../contracts/out/IPancakeRouter01.sol/IPancakeRouter01.json";
 import { getPairPool } from "@utils/helpers/getTokenAddress";
+import { Token } from "@interfaces/token";
+import { UserReserveData } from "@interfaces/userReserveData";
 const ROUTER_CONTRACT = "0xE915D2393a08a00c5A463053edD31bAe2199b9e7";
 const RPC_ENDPOINT = "https://astar.public.blastapi.io";
 
-//Add token decimals
-
-type TokenPair = {
-  tokenA: string;
-  tokenB: string;
+type QuoteProps = {
+  tokenA: Token | undefined;
+  tokenB: Token | undefined;
+  userReserveData: UserReserveData;
 };
 
-const QuoteSwap = ({ tokenA, tokenB }: TokenPair) => {
+type TokenPair = {
+  tokenA: Token | undefined;
+  tokenB: Token | undefined;
+};
+
+const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
   const [amountIn, setAmountIn] = useState("");
   const [returnMsg, setReturnMsg] = useState("");
-
+  const rawDebt = userReserveData.currentVariableDebt.toString();
+  const debt = ethers.utils.formatUnits(rawDebt, tokenA?.decimals);
   if (tokenA === undefined || tokenB === undefined) return <p>Not Supported</p>;
   async function getReserve({ tokenA, tokenB }: TokenPair) {
     if (tokenA === tokenB) {
       return;
     }
-    //get token0 and token1 and compare
-    const pairPool = getPairPool(tokenA, tokenB);
-    console.log(pairPool);
-    if (pairPool === undefined) {
-      setReturnMsg("Not Supported");
-      return;
-    }
+
     try {
       const provider = new ethers.providers.JsonRpcProvider(RPC_ENDPOINT);
-      const pairContract = new ethers.Contract(
-        pairPool,
-        tokenPairAbi,
-        provider
-      );
       const routerContract = new ethers.Contract(
         ROUTER_CONTRACT,
         routerAbi,
@@ -44,17 +39,22 @@ const QuoteSwap = ({ tokenA, tokenB }: TokenPair) => {
 
       try {
         const quoteAmount = await routerContract.getAmountsIn(
-          ethers.utils.parseEther("10"),
-          [tokenB, tokenA]
+          ethers.utils.parseUnits(debt, tokenA?.decimals),
+          [tokenB?.tokenAddress, tokenA?.tokenAddress]
         );
 
         console.log(
           ethers.utils.formatEther(quoteAmount[0]),
           ethers.utils.formatEther(quoteAmount[1])
         );
-        setAmountIn(ethers.utils.formatEther(quoteAmount[0]));
+        setAmountIn(
+          parseFloat(
+            ethers.utils.formatUnits(quoteAmount[0], tokenB?.decimals)
+          ).toFixed(4)
+        );
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching quote amount");
+        setReturnMsg("Not Supported");
       }
     } catch (error) {
       console.error("Error fetching token data with ethers.js:", error);
