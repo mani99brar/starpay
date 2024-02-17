@@ -1304,8 +1304,8 @@
       }
     },
     "test/StarPay.t.sol": {
-      "lastModificationDate": 1708162235890,
-      "contentHash": "22610722ff70b8a227b356a993a42dfc",
+      "lastModificationDate": 1708173098472,
+      "contentHash": "fbb6f20783e91ce29f8a9c72a678982d",
       "sourceName": "test/StarPay.t.sol",
       "solcConfig": {
         "settings": {

@@ -72,5 +72,44 @@ contract StarPayTest is Test {
         vm.stopPrank();
     }
 
+    function testSwapAndPayDebt() public {
+        address user = address(
+            0xFa00D29d378EDC57AA1006946F0fc6230a5E3288
+        );
+        vm.startPrank(user);
+        address tokenB = 0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720;
+        address tokenA = 0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4;
+        uint256 amount = 1e18;
+        address[] memory path = new address[](2);
+        path[0] = tokenB;
+        path[1] = tokenA;
+        uint256[] memory amountsIn = router.getAmountsIn(amount, path);
+        console.log(amountsIn[0]);
+        console.log(
+            "Token A:",
+            IERC20(tokenA).balanceOf(user),
+            "Token B:",
+            IERC20(tokenB).balanceOf(user)
+        );
+        IERC20(tokenB).approve(address(starpay), amountsIn[0]);
+        IERC20(0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4).approve(
+            address(starpay),
+            1e18
+        );
+        starpay.swapAndPayDebt(
+            0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4,
+            0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720,
+            1e18,
+            amountsIn[0],
+            user
+        );
+        console.log(
+            "Token A:",
+            IERC20(tokenA).balanceOf(user),
+            "Token B:",
+            IERC20(tokenB).balanceOf(user)
+        );
+        vm.stopPrank();
+    }
 
 }

@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { abi as routerAbi } from "../contracts/out/IPancakeRouter01.sol/IPancakeRouter01.json";
 import { getPairPool } from "@utils/helpers/getTokenAddress";
 import { Token } from "@interfaces/token";
+import SwapAndPay from "./SwapAndPay";
 import { UserReserveData } from "@interfaces/userReserveData";
 const ROUTER_CONTRACT = "0xE915D2393a08a00c5A463053edD31bAe2199b9e7";
 const RPC_ENDPOINT = "https://astar.public.blastapi.io";
@@ -21,6 +22,7 @@ type TokenPair = {
 const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
   const [amountIn, setAmountIn] = useState("");
   const [returnMsg, setReturnMsg] = useState("");
+  const [pay, setPay] = useState(false);
   const rawDebt = userReserveData.currentVariableDebt.toString();
   const debt = ethers.utils.formatUnits(rawDebt, tokenA?.decimals);
   if (tokenA === undefined || tokenB === undefined) return <p>Not Supported</p>;
@@ -61,12 +63,32 @@ const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
       setAmountIn("");
     }
   }
+  const handlePay = () => {
+    setPay(true);
+  };
   useEffect(() => {
     getReserve({ tokenA, tokenB });
   }, []);
+
   return (
     <div>
-      {amountIn != "" && <p>{amountIn}</p>}
+      {amountIn != "" && (
+        <button
+          className="bg-white text-black px-4 py-2 rounded-lg"
+          onClick={handlePay}
+        >
+          Pay with {amountIn}
+        </button>
+      )}
+      {pay && (
+        <SwapAndPay
+          setPay={setPay}
+          tokenA={tokenA}
+          tokenB={tokenB}
+          amountIn={amountIn}
+          userReserveData={userReserveData}
+        />
+      )}
       {returnMsg != "" && <p>{returnMsg}</p>}
     </div>
   );
