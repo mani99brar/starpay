@@ -7,10 +7,9 @@ import POOL_PAIRS from "@utils/constants/addresses/PoolPairs.json";
 import { Token } from "@interfaces/token";
 import { UserAllReserveData } from "@interfaces/userAllReserveData";
 import { UserReserveData } from "@interfaces/userReserveData";
-import { useAccount, WagmiProvider } from "wagmi";
+import { useAccount } from "wagmi";
 import { getToken } from "@utils/helpers/getTokenAddress";
 import TokenCard from "./TokenCard";
-import { get } from "http";
 const CONTRACT_ADDRESS = "0x5BF9B2644E273D92ff1C31A83476314c95953133";
 const RPC_ENDPOINT = "https://astar.public.blastapi.io";
 

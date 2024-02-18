@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { abi as routerAbi } from "../contracts/out/IPancakeRouter01.sol/IPancakeRouter01.json";
-import { getPairPool } from "@utils/helpers/getTokenAddress";
 import { Token } from "@interfaces/token";
 import SwapAndPay from "./SwapAndPay";
 import { UserReserveData } from "@interfaces/userReserveData";
@@ -49,11 +48,7 @@ const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
           ethers.utils.formatEther(quoteAmount[0]),
           ethers.utils.formatEther(quoteAmount[1])
         );
-        setAmountIn(
-          parseFloat(
-            ethers.utils.formatUnits(quoteAmount[0], tokenB?.decimals)
-          ).toFixed(4)
-        );
+        setAmountIn(ethers.utils.formatUnits(quoteAmount[0], tokenB?.decimals));
       } catch (error) {
         console.error("Error fetching quote amount");
         setReturnMsg("Not Supported");

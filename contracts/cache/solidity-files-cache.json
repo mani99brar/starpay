@@ -1134,8 +1134,8 @@
       }
     },
     "src/StarPay.sol": {
-      "lastModificationDate": 1708162382687,
-      "contentHash": "d99ef76b25c31a1d891b5db214a20357",
+      "lastModificationDate": 1708252276535,
+      "contentHash": "5120d4717a40b732a81ec74a99d35849",
       "sourceName": "src/StarPay.sol",
       "solcConfig": {
         "settings": {
@@ -1304,8 +1304,8 @@
       }
     },
     "test/StarPay.t.sol": {
-      "lastModificationDate": 1708173098472,
-      "contentHash": "fbb6f20783e91ce29f8a9c72a678982d",
+      "lastModificationDate": 1708251345684,
+      "contentHash": "8a04c4300cf0a55f56f08cb30167383c",
       "sourceName": "test/StarPay.t.sol",
       "solcConfig": {
         "settings": {

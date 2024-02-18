@@ -5,6 +5,7 @@ import "forge-std/Test.sol";
 
 import "../src/StarPay.sol";
 import "../src/interfaces/IPancakeRouter01.sol";
+
 //Lending Pool address: 0xFbBC96E9FfEC5b127876e9B4166598294b8B39f2
 //Pancake Router address: 0xE915D2393a08a00c5A463053edD31bAe2199b9e7
 //User address : 0xFa00D29d378EDC57AA1006946F0fc6230a5E3288
@@ -16,7 +17,7 @@ import "../src/interfaces/IPancakeRouter01.sol";
 contract StarPayTest is Test {
     StarPay public starpay;
     IPancakeRouter01 public router;
-
+    ILendingPool public lendingPool;
     function setUp() public {
         starpay = new StarPay(
             0xE915D2393a08a00c5A463053edD31bAe2199b9e7,
@@ -96,9 +97,10 @@ contract StarPayTest is Test {
             address(starpay),
             1e18
         );
+        vm.expectEmit();
         starpay.swapAndPayDebt(
-            0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4,
-            0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720,
+            tokenA,
+            tokenB,
             1e18,
             amountsIn[0],
             user

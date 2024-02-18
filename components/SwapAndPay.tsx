@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Token } from "@interfaces/token";
 import { UserReserveData } from "@interfaces/userReserveData";
 import { useState } from "react";
 import { ethers } from "ethers";
+import { abi as starPayAbi } from "../contracts/out/StarPay.sol/StarPay.json";
+import { abi as tokenAbi } from "../contracts/out/IERC20.sol/IERC20.json";
+import { useWriteContract, useAccount, type BaseError } from "wagmi";
+
+const STARPAY_CONTRACT = "0xaA5d4E34ba6D8079DCB6982Ef09b1175DE6b3414";
+
 type SwapAndPayProps = {
   setPay: React.Dispatch<React.SetStateAction<boolean>>;
   tokenA: Token | undefined;
@@ -18,6 +24,8 @@ const SwapAndPay = ({
   userReserveData,
   amountIn,
 }: SwapAndPayProps) => {
+  const { data: hash, isPending, writeContract, error } = useWriteContract();
+  const { address } = useAccount();
   const [stage, setStage] = useState(0);
   const closePay = () => {
     setPay(false);
@@ -26,13 +34,83 @@ const SwapAndPay = ({
   const debt = parseFloat(
     ethers.utils.formatUnits(rawDebt, tokenA?.decimals)
   ).toFixed(4);
-  function approveToken() {
+  useEffect(() => {
+    console.log(stage);
     if (stage === 1) {
-      setStage(2);
-    } else if (stage === 0) {
-      setStage(1);
+      if (tokenA && tokenB) {
+        approveToken(tokenB, amountIn);
+      }
+    } else if (stage === 3) {
+      if (tokenA && tokenB) {
+        approveToken(tokenA, debt);
+      }
+    } else if (stage === 5) {
+      if (tokenA && tokenB) {
+        payDebt(tokenA, tokenB, amountIn, debt);
+      }
     }
+    console.log(isPending);
+  }, [stage]);
+  useEffect(() => {
+    if (hash === undefined) return;
+    setStage((prevState) => {
+      return prevState + 1;
+    });
+  }, [hash]);
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+    }
+  }, [error]);
+  async function approveToken(token: Token, amount: string) {
+    writeContract({
+      address: token.tokenAddress as `0x${string}`,
+      abi: tokenAbi,
+      functionName: "approve",
+      args: [STARPAY_CONTRACT, ethers.utils.parseUnits(amount, token.decimals)],
+    });
   }
+
+  async function payDebt(
+    tokenA: Token,
+    tokenB: Token,
+    amountIn: string,
+    debt: string
+  ) {
+    console.log("paying debt");
+    console.log(
+      ethers.utils.parseUnits(debt, tokenA?.decimals).toString(),
+      ethers.utils
+        .parseUnits((parseInt(amountIn) + 1).toString(), tokenB?.decimals)
+        .toString()
+    );
+    writeContract({
+      address: STARPAY_CONTRACT as `0x${string}`,
+      abi: starPayAbi,
+      functionName: "swapAndPayDebt",
+      args: [
+        tokenA?.tokenAddress,
+        tokenB?.tokenAddress,
+        ethers.utils.parseUnits(debt, tokenA?.decimals),
+        ethers.utils.parseUnits(amountIn, tokenB?.decimals),
+        address,
+      ],
+    });
+  }
+
+  const handleNext = () => {
+    if (stage === 5) return;
+    setStage((prevState) => {
+      return prevState + 1;
+    });
+  };
+  const handlePrev = () => {
+    if (stage === 0) return;
+    setStage((prevState) => {
+      return prevState - 1;
+    });
+  };
+
   return (
     <div className="w-[100%] h-[100vh] absolute top-0 right-0 bg-slate-500 bg-opacity-55  flex justify-center items-center">
       <div className="w-[50%] h-[50%] flex justify-center items-center bg-black rounded-lg relative">
@@ -42,55 +120,85 @@ const SwapAndPay = ({
         >
           X
         </button>
+        <div className="flex flex-col absolute top-10">
+          <h1 className="text-xl">Go next if already approved</h1>
+          <div className="flex text-4xl justify-around mt-8">
+            <button onClick={handlePrev}>{`<`}</button>
+            <button onClick={handleNext}>{`>`}</button>
+          </div>
+        </div>
         <div className="w-[50%]">
-          {stage === 0 && tokenA && (
+          {(stage === 0 || stage === 1) && tokenA && (
             <div>
-              <button
-                onClick={approveToken}
-                className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
-              >
-                Approve Token {tokenB?.symbol} of worth {amountIn} for swapping
-              </button>
+              {isPending ? (
+                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                  Approving...
+                </p>
+              ) : (
+                <button
+                  onClick={() => setStage(1)}
+                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                >
+                  Approve Token {tokenB?.symbol} of worth {amountIn} for
+                  swapping
+                </button>
+              )}
             </div>
           )}
-          {stage === 1 && (
+          {(stage === 2 || stage === 3) && (
             <div>
-              <button
-                onClick={approveToken}
-                className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
-              >
-                Approve Token {tokenA?.symbol} of worth{debt} for repaying
-              </button>
+              {isPending ? (
+                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                  Approving...
+                </p>
+              ) : (
+                <button
+                  onClick={() => setStage(3)}
+                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                >
+                  Approve Token {tokenA?.symbol} of worth{debt} for repaying
+                </button>
+              )}
             </div>
           )}
-          {stage === 2 && (
+          {(stage === 4 || stage === 5) && (
             <div>
-              <button className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
-                Sign to repay the debt with Token {tokenB?.symbol}
-              </button>
+              {isPending ? (
+                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                  Approving...
+                </p>
+              ) : (
+                <button
+                  onClick={() => setStage(5)}
+                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                >
+                  Sign to repay the debt with Token {tokenB?.symbol}
+                </button>
+              )}
             </div>
           )}
+          {stage === 6 && isPending ? <p>Approving</p> : <p>Debt Repaid</p>}
         </div>
         <div className="flex w-[50%] absolute bottom-10 justify-stretch items-center">
           <div className={`w-[20px] h-[20px] rounded-lg bg-[#bf2db3]`}></div>
           <div
             className={`w-[49%] h-[2px] ${
-              stage >= 1 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
+              stage >= 2 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
             }`}
           ></div>
           <div
             className={`w-[20px] h-[20px] rounded-lg ${
-              stage >= 1 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
+              stage >= 3 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
             }`}
           ></div>
           <div
             className={`w-[49%] h-[2px] ${
-              stage == 2 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
+              stage >= 3 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
             }`}
           ></div>
           <div
             className={`w-[20px] h-[20px] rounded-lg ${
-              stage == 2 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
+              stage == 4 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
             }`}
           ></div>
         </div>
