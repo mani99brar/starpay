@@ -34,6 +34,7 @@ const SwapAndPay = ({
   const debt = parseFloat(
     ethers.utils.formatUnits(rawDebt, tokenA?.decimals)
   ).toFixed(4);
+
   useEffect(() => {
     console.log(stage);
     if (stage === 1) {
@@ -99,15 +100,18 @@ const SwapAndPay = ({
   }
 
   const handleNext = () => {
-    if (stage === 5) return;
+    if (stage === 5 || stage === 4) return;
     setStage((prevState) => {
-      return prevState + 1;
+      if (prevState === 1 || prevState === 3) {
+        return prevState + 1;
+      } else return prevState + 2;
     });
   };
   const handlePrev = () => {
-    if (stage === 0) return;
     setStage((prevState) => {
-      return prevState - 1;
+      if (prevState === 2 || prevState === 4) return prevState - 2;
+      else if (prevState > 0) return prevState - 1;
+      else return prevState;
     });
   };
 
@@ -139,8 +143,8 @@ const SwapAndPay = ({
                   onClick={() => setStage(1)}
                   className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
                 >
-                  Approve Token {tokenB?.symbol} of worth {amountIn} for
-                  swapping
+                  Approve Token {tokenB?.symbol} of
+                  {" " + parseFloat(amountIn).toFixed(4)} for swapping
                 </button>
               )}
             </div>
@@ -177,7 +181,7 @@ const SwapAndPay = ({
               )}
             </div>
           )}
-          {stage === 6 && isPending ? <p>Approving</p> : <p>Debt Repaid</p>}
+          {stage >= 6 && (isPending ? <p>Approving</p> : <p>Debt Repaid</p>)}
         </div>
         <div className="flex w-[50%] absolute bottom-10 justify-stretch items-center">
           <div className={`w-[20px] h-[20px] rounded-lg bg-[#bf2db3]`}></div>
@@ -198,7 +202,7 @@ const SwapAndPay = ({
           ></div>
           <div
             className={`w-[20px] h-[20px] rounded-lg ${
-              stage == 4 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
+              stage > 4 ? "bg-[#bf2db3]" : "bg-[#00eaff]"
             }`}
           ></div>
         </div>

@@ -5,10 +5,8 @@ import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
 const config = createConfig(
   getDefaultConfig({
-    // Your dApps chains
     chains: [astar],
     transports: {
-      // RPC URL for each chain
       [astar.id]: http(`https://astar.public.blastapi.io`),
     },
     walletConnectProjectId: "9dd8be5589c75a5fe769e3c2813137d1",

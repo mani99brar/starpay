@@ -35,22 +35,35 @@ const UserRepayments = () => {
       console.error("Error fetching token data with ethers.js:", error);
     }
   }
+  const fetchUserReserveData = async () => {
+    for (const tokenInfo of RESERVE_TOKENS) {
+      await getAllReservesTokens(tokenInfo);
+    }
+  };
 
   useEffect(() => {
-    const fetchUserReserveData = async () => {
-      for (const tokenInfo of RESERVE_TOKENS) {
-        await getAllReservesTokens(tokenInfo);
-      }
-    };
-    fetchUserReserveData();
+    if (address) {
+      fetchUserReserveData();
+    }
+
     console.log(userData);
   }, [address]);
   function handlePayTokenChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const token = getToken(event.target.value);
     setPayToken(token);
   }
-  if (isConnecting) return <p>Connecting...</p>;
-  if (isDisconnected) return <p>Connect Your Wallet</p>;
+  if (isDisconnected)
+    return (
+      <div className="w-full flex justify-center items-center">
+        <p className="text-4xl m-10">Connect Your Wallet</p>
+      </div>
+    );
+  if (isConnecting)
+    return (
+      <div className="w-full flex justify-center items-center">
+        <p className="text-4xl m-10">Connecting...</p>
+      </div>
+    );
 
   return (
     <div className="w-full flex justify-center">
@@ -68,7 +81,7 @@ const UserRepayments = () => {
                 className="text-white bg-black w-[33%] p-2"
                 onChange={handlePayTokenChange}
               >
-                <option value="none" disabled selected>
+                <option value="none" disabled>
                   Choose Token to Repay
                 </option>
                 {POOL_PAIRS.map((token) => (

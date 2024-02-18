@@ -59,6 +59,7 @@ const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
     }
   }
   const handlePay = () => {
+    window.scrollTo(0, 0);
     setPay(true);
   };
   useEffect(() => {
@@ -72,7 +73,7 @@ const QuoteSwap = ({ tokenA, tokenB, userReserveData }: QuoteProps) => {
           className="bg-white text-black px-4 py-2 rounded-lg"
           onClick={handlePay}
         >
-          Pay with {amountIn}
+          Pay with {parseFloat(amountIn).toFixed(4)}
         </button>
       )}
       {pay && (
