@@ -1,7 +1,7 @@
 ## Overview
 StarPay offers a streamlined solution for users to efficiently repay their debts on Starlay Finance.Enabling atomic transaction including, swaps from any preferred token directly into debt repayment in a seamless and user-friendly interface.
 
-Built using : [Arthswap](https://docs.arthswap.org/) <br>
+DEX : [Arthswap](https://docs.arthswap.org/) <br>
 Built for : [StarLay Finance](https://docs.starlay.finance/)
 
 
