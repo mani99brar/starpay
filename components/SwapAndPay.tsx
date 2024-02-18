@@ -131,58 +131,66 @@ const SwapAndPay = ({
             <button onClick={handleNext}>{`>`}</button>
           </div>
         </div>
-        <div className="w-[50%]">
-          {(stage === 0 || stage === 1) && tokenA && (
-            <div>
-              {isPending ? (
-                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
-                  Approving...
-                </p>
-              ) : (
-                <button
-                  onClick={() => setStage(1)}
-                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
-                >
-                  Approve Token {tokenB?.symbol} of
-                  {" " + parseFloat(amountIn).toFixed(4)} for swapping
-                </button>
-              )}
-            </div>
-          )}
-          {(stage === 2 || stage === 3) && (
-            <div>
-              {isPending ? (
-                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
-                  Approving...
-                </p>
-              ) : (
-                <button
-                  onClick={() => setStage(3)}
-                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
-                >
-                  Approve Token {tokenA?.symbol} of worth{debt} for repaying
-                </button>
-              )}
-            </div>
-          )}
-          {(stage === 4 || stage === 5) && (
-            <div>
-              {isPending ? (
-                <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
-                  Approving...
-                </p>
-              ) : (
-                <button
-                  onClick={() => setStage(5)}
-                  className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
-                >
-                  Sign to repay the debt with Token {tokenB?.symbol}
-                </button>
-              )}
-            </div>
-          )}
-          {stage >= 6 && (isPending ? <p>Approving</p> : <p>Debt Repaid</p>)}
-        </div>
+        {error ? (
+          <div className="w-[50%]">
+            <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+              Pancake Slippage Error. Try another token or try after some time.
+            </p>
+          </div>
+        ) : (
+          <div className="w-[50%]">
+            {(stage === 0 || stage === 1) && tokenA && (
+              <div>
+                {isPending ? (
+                  <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                    Approving...
+                  </p>
+                ) : (
+                  <button
+                    onClick={() => setStage(1)}
+                    className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                  >
+                    Approve Token {tokenB?.symbol} of
+                    {" " + parseFloat(amountIn).toFixed(4)} for swapping
+                  </button>
+                )}
+              </div>
+            )}
+            {(stage === 2 || stage === 3) && (
+              <div>
+                {isPending ? (
+                  <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                    Approving...
+                  </p>
+                ) : (
+                  <button
+                    onClick={() => setStage(3)}
+                    className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                  >
+                    Approve Token {tokenA?.symbol} of worth{debt} for repaying
+                  </button>
+                )}
+              </div>
+            )}
+            {(stage === 4 || stage === 5) && (
+              <div>
+                {isPending ? (
+                  <p className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg">
+                    Approving...
+                  </p>
+                ) : (
+                  <button
+                    onClick={() => setStage(5)}
+                    className="bg-[#bf2db3] w-[100%] text-white px-4 py-2 rounded-lg"
+                  >
+                    Sign to repay the debt with Token {tokenB?.symbol}
+                  </button>
+                )}
+              </div>
+            )}
+            {stage >= 6 && (isPending ? <p>Approving</p> : <p>Debt Repaid</p>)}
+          </div>
+        )}
         <div className="flex w-[50%] absolute bottom-10 justify-stretch items-center">
           <div className={`w-[20px] h-[20px] rounded-lg bg-[#bf2db3]`}></div>
           <div
